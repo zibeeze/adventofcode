@@ -1,0 +1,27 @@
+{
+  "$schema": "http://json-schema.org/schema",
+  "cli": "nx",
+  "$id": "Day",
+  "title": "Create a new day event",
+  "type": "object",
+  "examples": [
+    {
+      "command": "g lib three --directory=twenty-one",
+      "description": "Generate libs/twenty-one/three"
+    }
+  ],
+  "properties": {
+    "day": {
+      "description": "Day Number",
+      "$default": {
+        "$source": "argv",
+        "index": 0
+      },
+      "x-prompt": "What number would you like to use for the day?"
+    },
+    "year": {
+      "description": "The year where the day is placed"
+    }
+  },
+  "required": ["day", "year"]
+}
