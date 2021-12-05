@@ -2,13 +2,13 @@ import { partOne, partTwo } from './15-2';
 import { testInput, probInput } from './inputs';
 
 describe('152', () => {
-  it.only('PART ONE', () => {
-    expect(partOne(testInput)).toEqual();
-    console.log(`PART ONE ANSWER: ${partOne(probInput)}`);
+  it('PART ONE', () => {
+    expect(partOne(<string[]>testInput)).toEqual(101);
+    console.log(`PART ONE ANSWER: ${partOne(<string[]>probInput)}`);
   });
 
-  //it.only('PART TWO', () => {
-  //    expect(partTwo(testInput)).toEqual('');
-  //    console.log(`PART TWO ANSWER: ${partTwo(probInput)}`);
-  //});
+  it('PART TWO', () => {
+    expect(partTwo(<string[]>testInput)).toEqual(48);
+    console.log(`PART TWO ANSWER: ${partTwo(<string[]>probInput)}`);
+  });
 });
