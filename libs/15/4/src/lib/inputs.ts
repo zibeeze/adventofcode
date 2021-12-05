@@ -1,12 +1,8 @@
-import { parseArrayFromText } from '@aoc/util';
+import { readStringFromFile } from '@aoc/util';
 
-export const testInput = parseArrayFromText(
-  './libs/15/4/src/lib/test-input.txt',
-  ['\n'],
-  true
+export const testInput = readStringFromFile(
+  './libs/15/4/src/lib/test-input.txt'
 );
-export const probInput = parseArrayFromText(
-  './libs/15/4/src/lib/prob-input.txt',
-  ['\n'],
-  true
+export const probInput = readStringFromFile(
+  './libs/15/4/src/lib/prob-input.txt'
 );
