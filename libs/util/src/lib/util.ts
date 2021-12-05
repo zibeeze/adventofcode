@@ -1,4 +1,8 @@
 import { readFileSync } from 'fs';
+
+export function readStringFromFile(path: string) {
+  return readFileSync(path).toString();
+}
 /***
  * PARSE ARRAY FROM TEXT FILE
  *
@@ -11,7 +15,7 @@ export function parseArrayFromText(
   delimiters: string[],
   convertToNum: boolean
 ): string[] | number[] {
-  const file = readFileSync(path).toString();
+  const file = readStringFromFile(path);
   let result: any[] = file.split(delimiters[0]);
   delimiters = delimiters.slice(1);
   if (delimiters.length) {

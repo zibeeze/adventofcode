@@ -1,0 +1,32 @@
+{
+  "root": "libs/15/24",
+  "sourceRoot": "libs/15/24/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/15/24/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/15/24"],
+      "options": {
+        "jestConfig": "libs/15/24/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "input": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "node ./tools/scripts/get-problem-input.js --day=24 --year=15"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}
