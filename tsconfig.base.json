@@ -34,6 +34,7 @@
       "@aoc/21/3": ["libs/21/3/src/index.ts"],
       "@aoc/21/4": ["libs/21/4/src/index.ts"],
       "@aoc/21/5": ["libs/21/5/src/index.ts"],
+      "@aoc/21/6": ["libs/21/6/src/index.ts"],
       "@aoc/constants": ["libs/constants/src/index.ts"],
       "@aoc/util": ["libs/util/src/index.ts"]
     }
