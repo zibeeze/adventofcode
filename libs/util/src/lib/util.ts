@@ -1,4 +1,5 @@
 import { readFileSync } from 'fs';
+import { inspect } from 'util';
 
 export function readStringFromFile(path: string) {
   return readFileSync(path).toString();
@@ -46,4 +47,8 @@ export function intToBinaryString(number: number, length: number): string {
     count += 1;
   }
   return bin;
+}
+
+export function logInspect(obj: any) {
+  console.log(inspect(obj, { depth: null, colors: true }));
 }
