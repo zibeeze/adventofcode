@@ -11,6 +11,9 @@
     }
   ],
   "properties": {
+    "year": {
+      "description": "The year where the day is placed"
+    },
     "day": {
       "description": "Day Number",
       "$default": {
@@ -18,9 +21,6 @@
         "index": 0
       },
       "x-prompt": "What number would you like to use for the day?"
-    },
-    "year": {
-      "description": "The year where the day is placed"
     }
   },
   "required": ["day", "year"]
