@@ -33,6 +33,7 @@
       "@aoc/20/17": ["libs/20/17/src/index.ts"],
       "@aoc/21/1": ["libs/21/1/src/index.ts"],
       "@aoc/21/10": ["libs/21/10/src/index.ts"],
+      "@aoc/21/11": ["libs/21/11/src/index.ts"],
       "@aoc/21/2": ["libs/21/2/src/index.ts"],
       "@aoc/21/3": ["libs/21/3/src/index.ts"],
       "@aoc/21/4": ["libs/21/4/src/index.ts"],

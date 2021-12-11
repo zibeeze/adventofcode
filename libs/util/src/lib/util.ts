@@ -52,6 +52,17 @@ export function intToBinaryString(number: number, length: number): string {
 export function logInspect(obj: any) {
   console.log(inspect(obj, { depth: null, colors: true }));
 }
+
+export const TWO_DIMENSIONAL_NEIGHBOR_MOVES = [
+  [-1, -1],
+  [0, -1],
+  [1, -1],
+  [-1, 0],
+  [1, 0],
+  [-1, 1],
+  [0, 1],
+  [1, 1],
+];
 export const THREE_DIMENSIONAL_NEIGHBOR_MOVES = [
   [-1, 1, 1],
   [0, 1, 1],
