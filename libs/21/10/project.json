@@ -1,0 +1,32 @@
+{
+  "root": "libs/21/10",
+  "sourceRoot": "libs/21/10/src",
+  "projectType": "library",
+  "targets": {
+    "lint": {
+      "executor": "@nrwl/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["libs/21/10/**/*.ts"]
+      }
+    },
+    "test": {
+      "executor": "@nrwl/jest:jest",
+      "outputs": ["coverage/libs/21/10"],
+      "options": {
+        "jestConfig": "libs/21/10/jest.config.js",
+        "passWithNoTests": true
+      }
+    },
+    "input": {
+      "executor": "@nrwl/workspace:run-commands",
+      "options": {
+        "commands": [
+          "node ./tools/scripts/get-problem-input.js --day=10 --year=21"
+        ],
+        "parallel": false
+      }
+    }
+  },
+  "tags": []
+}
