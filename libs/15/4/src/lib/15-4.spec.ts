@@ -5,10 +5,6 @@ describe('154', () => {
   it.only('PART ONE', () => {
     expect(mine(testInput, '00000')).toEqual(609043);
     console.log(`PART ONE ANSWER: ${mine(probInput, '00000')}`);
-  });
-
-  it.only('PART TWO', () => {
-    expect(mine(testInput, '000000')).toEqual('');
     console.log(`PART TWO ANSWER: ${mine(probInput, '000000')}`);
   });
 });
