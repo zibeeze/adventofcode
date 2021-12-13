@@ -7,7 +7,7 @@ describe('2017', () => {
     console.log(`PART ONE ANSWER: ${partOne(<string[]>probInput)}`);
   });
 
-  it.only('PART TWO', () => {
+  it('PART TWO', () => {
     expect(partTwo(<string[]>testInput)).toEqual(848);
     console.log(`PART TWO ANSWER: ${partTwo(<string[]>probInput)}`);
   });

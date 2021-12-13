@@ -1,5 +1,4 @@
 import * as _ from 'lodash';
-import { logInspect } from '@aoc/util';
 import {
   THREE_DIMENSIONAL_NEIGHBOR_MOVES,
   FOUR_DIMENSIONAL_NEIGHBOR_MOVES,
@@ -10,10 +9,6 @@ export function partOne(input: string[]) {
       .filter((x) => !!x)
       .map((x) => x.split('').map((x) => (x === '.' ? false : true))),
   ];
-  // logInspect(cube);
-  // cube = cycle(cube);
-  // logInspect(cube.map((x) => x.map((y) => y.map((z) => (z ? '#' : '.')))));
-  // logInspect(cube);
   for (let i = 0; i < 6; i++) {
     cube = cycleCube(cube);
   }
@@ -38,20 +33,19 @@ function expandCube(cube: boolean[][][]) {
 }
 function expandQuad(quad: boolean[][][][]) {
   const pocket = [];
-  const newX = _.range(quad[0][0].length + 2).map((x) => false);
-  logInspect({ newX });
-  const newZ = _.range(newX.length).map((x) => [...newX]);
-  const newW = _.range(newZ.length).map((x) => [...newZ]);
+  const newY = _.range(quad[0][0].length + 2).map((x) => false);
+  const newZ = _.range(newY.length).map((x) => [...newY]);
+  const newW = _.range(quad[0].length + 2).map((x) => [...newZ]);
   pocket.push([...newW]);
   for (let i = 0; i < quad.length; i++) {
     let w = quad[i];
     w = w.map((x) => {
       return [
-        newX,
+        newY,
         ...x.map((y) => {
           return [false, ...y, false];
         }),
-        newX,
+        newY,
       ];
     });
     w.push(newZ);
@@ -95,6 +89,40 @@ function cycleCube(cube: boolean[][][]) {
 }
 function cycleQuad(quad: boolean[][][][]) {
   quad = expandQuad(quad);
+  let energized = [];
+  for (let w = 0; w < quad.length; w++) {
+    const W = quad[w];
+    let newW = [];
+    for (let z = 0; z < W.length; z++) {
+      const Z = W[z];
+      const newZ = [];
+      for (let y = 0; y < Z.length; y++) {
+        const Y = Z[y];
+        const newY = [];
+        for (let x = 0; x < Y.length; x++) {
+          const point = Y[x];
+          const active = checkNeighborsQuad(quad, x, y, z, w);
+          if (point) {
+            if (active === 2 || active === 3) {
+              newY.push(true);
+            } else {
+              newY.push(false);
+            }
+          } else {
+            if (active === 3) {
+              newY.push(true);
+            } else {
+              newY.push(false);
+            }
+          }
+        }
+        newZ.push(newY);
+      }
+      newW.push(newZ);
+    }
+    energized.push(newW);
+  }
+  return energized;
 }
 function checkNeighborsCube(
   cube: boolean[][][],
@@ -116,7 +144,6 @@ function checkNeighborsCube(
   }
   return active;
 }
-
 function checkNeighborsQuad(
   quad: boolean[][][][],
   x: number,
@@ -146,15 +173,18 @@ function checkNeighborsQuad(
       active += quad[W][Z][Y][X] ? 1 : 0;
     }
   }
+  return active;
 }
-
 export function partTwo(input: string[]) {
   let quad: any = [
-    input
-      .filter((x) => !!x)
-      .map((x) => x.split('').map((x) => (x === '.' ? false : true))),
+    [
+      input
+        .filter((x) => !!x)
+        .map((x) => x.split('').map((x) => (x === '.' ? false : true))),
+    ],
   ];
-  logInspect(quad);
-  quad = expandQuad(quad);
-  logInspect(quad);
+  for (let i = 0; i < 6; i++) {
+    quad = cycleQuad(quad);
+  }
+  return quad.flat(3).filter((x) => x).length;
 }
